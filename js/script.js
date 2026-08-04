@@ -116,6 +116,51 @@ document.querySelectorAll('.scroll-arrow').forEach((arrow) => {
   });
 });
 
+/* ─── Video autoplay guard ───
+
+   Mobile Safari refuses or silently drops autoplay when several videos
+   compete for decoders, so the section that is on screen gets played and
+   the others are paused. play() is also retried on the first tap, since
+   some browsers only release playback after a user gesture. */
+
+const videos = document.querySelectorAll('section video');
+
+function tryPlay(video) {
+  const played = video.play();
+  if (played && typeof played.catch === 'function') {
+    played.catch(() => {});
+  }
+}
+
+const videoObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        tryPlay(entry.target);
+      } else {
+        entry.target.pause();
+      }
+    });
+  },
+  { threshold: 0.25 }
+);
+
+videos.forEach((video) => {
+  // Muted is a hard requirement for autoplay; set it here too in case the
+  // attribute is lost.
+  video.muted = true;
+  videoObserver.observe(video);
+});
+
+function resumePlayback() {
+  videos.forEach((video) => {
+    if (video.paused) tryPlay(video);
+  });
+}
+
+document.addEventListener('touchstart', resumePlayback, { once: true, passive: true });
+document.addEventListener('click', resumePlayback, { once: true });
+
 /* ─── First section: reveal immediately ─── */
 
 const firstReveal = document.querySelector('.section-a .reveal');
