@@ -1,9 +1,5 @@
 # Maximus
 
-[![Maximus](media/maximus-preview.gif)](media/maximus-github.mp4)
-
-*Click to play the full-quality video (1280×720, 29s).*
-
 This two-day project showcases Maximus, a humanoid robot concept developed for the AI Prompt Design course within the Master in Design and Innovation. Throughout the course, I explored AI-driven media generation workflows using tools such as Kling AI, Google Veo, Runway, Vizcom, FLUX, and Wan.
 
 Instructor: Alejandro Gandarilla, M.S. in Synthetic Landscapes from the Southern California Institute of Architecture (SCI-Arc) and Head of Technology at the Center for Technological Revolution in Creative Industries.
