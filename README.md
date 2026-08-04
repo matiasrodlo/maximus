@@ -2,14 +2,10 @@
 
 ![Maximus](media/maximus-readme.gif)
 
-This two-day project showcases Maximus, a humanoid robot concept developed for the AI Prompt Design course within the Master in Design and Innovation. Throughout the course, I explored AI-driven media generation workflows using tools such as Kling AI, Google Veo, Runway, Vizcom, FLUX, and Wan.
+*Preview shown as a GIF — color depth and frame rate are reduced by the format and compression, so quality is lower than the source video.*
 
-Instructor: Alejandro Gandarilla, M.S. in Synthetic Landscapes from the Southern California Institute of Architecture (SCI-Arc) and Head of Technology at the Center for Technological Revolution in Creative Industries.
-## Structure
+AI-driven media generation research on humanoid robot concept design, video synthesis, and cinematic sequencing, developed during the AI Prompt Design course of the Master of Design and Innovation program, taught by Alejandro Gandarilla, M.S. in Synthetic Landscapes from the Southern California Institute of Architecture (SCI-Arc) and Head of Technology at the Center for Technological Revolution in Creative Industries.
 
-```
-index.html      Single-page site (intro, home, deployment sections)
-css/style.css   Styles
-js/script.js    Section navigation, menu, scroll behavior
-media/          Logo, favicon, and generated video scenes
-```
+The work focused on generation parameters — prompt structure, image conditioning, camera motion, lighting continuity, and shot pacing — and their impact on visual coherence across a multi-shot sequence.
+
+I explored Vizcom and FLUX for concept imagery and Kling AI, Google Veo, Runway, and Wan for video synthesis, staging Maximus across three contexts — an introductory reveal, a domestic setting, and an industrial assembly line — assembled into a single-page site over a two-day production cycle.
