@@ -4,7 +4,7 @@ Two-day AI-driven media generation exploration on humanoid robot concept design,
 
 The work explored prompt structure, image conditioning, camera motion, and lighting continuity, and how they affect visual coherence across a multi-shot sequence.
 
-I explored Vizcom and FLUX for concept imagery and Kling AI, Google Veo, Runway, and Wan for video synthesis, staging Maximus across three contexts.
+I explored Vizcom and FLUX for concept imagery and Kling AI, Google Veo, Runway, and Wan for video synthesis.
 
 ![Maximus trailer](media/maximus-trailer.gif)
 
