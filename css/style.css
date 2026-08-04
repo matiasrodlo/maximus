@@ -799,3 +799,67 @@ section.in-view video {
     margin-bottom: 20px;
   }
 }
+
+/* Portrait phones: video band + copy below
+
+   The scene videos are 16:9. Stretching one over a full-height portrait screen
+   with object-fit: cover leaves only the middle ~26% of the frame visible,
+   which crops the robot out of shot. Giving the video a shorter band widens
+   that window to ~43% — enough for the whole subject — and the copy moves
+   below it instead of sitting on top. */
+
+@media (orientation: portrait) and (max-width: 900px) {
+  section {
+    --video-band: 62dvh;
+    background-color: var(--color-black);
+  }
+
+  .section-a-video,
+  .section-b-video,
+  .section-c-video {
+    height: var(--video-band);
+  }
+
+  /* Anchor each crop on the robot rather than the frame centre */
+  .section-a-video {
+    object-position: 78% center;
+  }
+
+  .section-b-video {
+    object-position: 57% center;
+  }
+
+  .section-c-video {
+    object-position: 58% center;
+  }
+
+  /* Dim only the footage, not the copy area below it */
+  .section-a::before,
+  .section-b::before,
+  .section-c::before {
+    inset: 0 0 auto 0;
+    height: var(--video-band);
+  }
+
+  .section-inner {
+    top: calc(var(--video-band) + 26px);
+    bottom: auto;
+  }
+
+  .scroll-arrow {
+    bottom: 22px;
+  }
+}
+
+/* Short phones (SE-sized and landscape-ish heights): shrink the video band so
+   the heading, copy and button still fit under it without being cut off. */
+
+@media (orientation: portrait) and (max-width: 900px) and (max-height: 720px) {
+  section {
+    --video-band: 48dvh;
+  }
+
+  .section-inner {
+    top: calc(var(--video-band) + 18px);
+  }
+}
