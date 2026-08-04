@@ -1,6 +1,6 @@
 # Maximus
 
-[![Maximus](media/maximus-poster.jpg)](media/maximus-github.mp4)
+[![Maximus](media/maximus-preview.gif)](media/maximus-github.mp4)
 
 *Click to play the full-quality video (1280×720, 29s).*
 
