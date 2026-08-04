@@ -1,6 +1,6 @@
 # Maximus
 
-<video src="https://github.com/matiasrodlo/maximus/raw/main/media/robot-intro.mp4" autoplay loop muted playsinline width="100%"></video>
+![Maximus](media/robot-home.gif)
 
 This two-day project showcases Maximus, a humanoid robot concept developed for the AI Prompt Design course within the Master in Design and Innovation. Throughout the course, I explored AI-driven media generation workflows using tools such as Kling AI, Google Veo, Runway, Vizcom, FLUX, and Wan.
 
