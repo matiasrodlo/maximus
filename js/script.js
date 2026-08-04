@@ -132,34 +132,59 @@ function tryPlay(video) {
   }
 }
 
-const videoObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        tryPlay(entry.target);
-      } else {
-        entry.target.pause();
-      }
-    });
-  },
-  { threshold: 0.25 }
-);
+function isOnScreen(video) {
+  const viewport = window.innerHeight || document.documentElement.clientHeight;
+  const rect = video.getBoundingClientRect();
+
+  // If the layout cannot be measured yet, assume visible rather than pausing —
+  // a wrong pause cancels autoplay and the video never starts.
+  if (!viewport || !rect.height) return true;
+
+  // A quarter of the video has to be showing. A bare overlap test would count
+  // the next section too, since the Ken Burns scale() inflates the rect past
+  // the fold.
+  const visible = Math.min(rect.bottom, viewport) - Math.max(rect.top, 0);
+
+  return visible / rect.height >= 0.25;
+}
+
+/* Play what is on screen, pause the rest. This reads real geometry every
+   time rather than trusting a single observer event: the layout uses dvh,
+   which settles late on mobile as the URL bar resizes the viewport, and an
+   early "not visible" callback would otherwise pause the first video and
+   cancel its autoplay. */
+function syncPlayback() {
+  videos.forEach((video) => {
+    if (isOnScreen(video)) {
+      if (video.paused) tryPlay(video);
+    } else if (!video.paused) {
+      video.pause();
+    }
+  });
+}
+
+const videoObserver = new IntersectionObserver(syncPlayback, {
+  threshold: [0, 0.25],
+});
 
 videos.forEach((video) => {
   // Muted is a hard requirement for autoplay; set it here too in case the
   // attribute is lost.
   video.muted = true;
+  video.addEventListener('canplay', syncPlayback);
   videoObserver.observe(video);
 });
 
-function resumePlayback() {
-  videos.forEach((video) => {
-    if (video.paused) tryPlay(video);
-  });
-}
+window.addEventListener('load', syncPlayback);
+window.addEventListener('resize', syncPlayback);
 
-document.addEventListener('touchstart', resumePlayback, { once: true, passive: true });
-document.addEventListener('click', resumePlayback, { once: true });
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) syncPlayback();
+});
+
+// Some browsers only release playback after a gesture; any tap retries.
+document.addEventListener('touchstart', syncPlayback, { passive: true });
+document.addEventListener('click', syncPlayback);
 
 /* ─── First section: reveal immediately ─── */
 
