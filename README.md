@@ -6,8 +6,8 @@ The work explored prompt structure, image conditioning, camera motion, and light
 
 I explored Vizcom and FLUX for concept imagery and Kling AI, Google Veo, Runway, and Wan for video synthesis.
 
-<img src="media/maximus-trailer.gif" alt="Maximus trailer" width="100%">
+![Maximus trailer](media/maximus-trailer.gif)
 
-<img src="media/maximus-readme.gif" alt="Maximus" width="100%">
+![Maximus](media/maximus-readme.gif)
 
 *Previews shown as GIFs — no audio, and color depth and frame rate are reduced by the format and compression, so quality is lower than the source videos.*
